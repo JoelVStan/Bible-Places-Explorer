@@ -1,0 +1,6 @@
+{
+  "name": "ബൈബിൾ സ്ഥലങ്ങൾ (Bible Places Explorer)",
+  "description": "വിശുദ്ധ ബൈബിളിലെ ചരിത്ര പ്രസിദ്ധ സ്ഥലങ്ങൾ, മാപ്പുകൾ, മലയാളം വേദവാക്യങ്ങൾ, യാത്രകൾ, കാലഗണന എന്നിവ അടങ്ങിയ ഇന്ററാക്ടീവ് ബൈബിൾ അറ്റ്ലസ്.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

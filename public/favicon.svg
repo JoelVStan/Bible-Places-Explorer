@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Squircle Base with Deep Parchment-Night Gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#292524" />
+      <stop offset="100%" stop-color="#0c0a09" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="#d97706" stroke-width="2" />
+
+  <!-- Outer Map Latitude/Longitude Ring -->
+  <circle cx="32" cy="32" r="24" stroke="#d97706" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6" />
+  <circle cx="32" cy="32" r="18" fill="url(#glowGrad)" />
+  <circle cx="32" cy="32" r="18" stroke="#f59e0b" stroke-width="1" opacity="0.5" />
+
+  <!-- Cardinal Points (Cross / Rose) -->
+  <!-- North Point -->
+  <polygon points="32,7 35,26 32,29 29,26" fill="url(#goldGrad)" stroke="#78350f" stroke-width="0.5" />
+  <!-- South Point -->
+  <polygon points="32,57 35,38 32,35 29,38" fill="url(#goldGrad)" stroke="#78350f" stroke-width="0.5" />
+  <!-- East Point -->
+  <polygon points="57,32 38,35 35,32 38,29" fill="url(#goldGrad)" stroke="#78350f" stroke-width="0.5" />
+  <!-- West Point -->
+  <polygon points="7,32 26,35 29,32 26,29" fill="url(#goldGrad)" stroke="#78350f" stroke-width="0.5" />
+
+  <!-- Diagonal Sub-points -->
+  <polygon points="49,15 36,28 34,26" fill="#fde047" opacity="0.8" />
+  <polygon points="49,49 36,36 34,38" fill="#fde047" opacity="0.8" />
+  <polygon points="15,49 28,36 26,38" fill="#fde047" opacity="0.8" />
+  <polygon points="15,15 28,28 26,26" fill="#fde047" opacity="0.8" />
+
+  <!-- Center Pivot / Cross Dot -->
+  <circle cx="32" cy="32" r="5" fill="#fef08a" stroke="#b45309" stroke-width="1.5" />
+  <circle cx="32" cy="32" r="2" fill="#78350f" />
+</svg>
