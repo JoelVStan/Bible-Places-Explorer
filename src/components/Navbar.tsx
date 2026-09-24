@@ -12,9 +12,10 @@ import {
   BookOpen,
   List,
   X,
+  Info,
 } from 'lucide-react';
 
-export type NavTab = 'map' | 'places' | 'paul' | 'jesus' | 'timeline';
+export type NavTab = 'map' | 'places' | 'paul' | 'jesus' | 'timeline' | 'about';
 
 interface NavbarProps {
   currentTab: NavTab;
@@ -232,6 +233,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Clock className="w-3.5 h-3.5" />
             <span>Timeline</span>
+          </button>
+
+          <button
+            onClick={() => onTabChange('about')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all cursor-pointer ${
+              currentTab === 'about'
+                ? 'bg-amber-600 text-white shadow-xs font-semibold'
+                : 'text-stone-600 dark:text-stone-300 hover:bg-amber-100/60 dark:hover:bg-stone-800'
+            }`}
+          >
+            <Info className="w-3.5 h-3.5 text-amber-500" />
+            <span>About</span>
           </button>
         </nav>
       </div>

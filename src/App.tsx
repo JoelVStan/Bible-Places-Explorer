@@ -9,11 +9,11 @@ import { PlacesListView } from './components/PlacesListView';
 import { PaulJourneysView } from './components/PaulJourneysView';
 import { JesusMinistryView } from './components/JesusMinistryView';
 import { TimelineView } from './components/TimelineView';
+import { AboutView } from './components/AboutView';
 import { PlaceDetailModal } from './components/PlaceDetailModal';
 import { FullChapterReader } from './components/FullChapterReader';
 import { DailyFeaturedModal } from './components/DailyFeaturedModal';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
-import { Footer } from './components/Footer';
 
 export default function App() {
   // Navigation State
@@ -262,10 +262,23 @@ export default function App() {
             />
           </div>
         )}
-      </main>
 
-      {/* Footer shown on scrollable tabs (not on map to prevent vertical scrolling on map canvas) */}
-      {currentTab !== 'map' && <Footer />}
+        {/* TAB 6: ABOUT PAGE */}
+        {currentTab === 'about' && (
+          <div className="flex-1">
+            <AboutView
+              onNavigateTab={(tab) => {
+                setCurrentTab(tab);
+                if (tab !== 'map') {
+                  setActiveJourney(null);
+                }
+              }}
+              onOpenDaily={() => setIsDailyOpen(true)}
+              onLocatePlaceById={handleSelectPlaceById}
+            />
+          </div>
+        )}
+      </main>
 
       {/* Mobile Sticky Bottom Navigation Bar */}
       <MobileBottomNav

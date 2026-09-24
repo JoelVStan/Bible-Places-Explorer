@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, List, Route, BookOpen, Clock } from 'lucide-react';
+import { Compass, List, Route, BookOpen, Clock, Info } from 'lucide-react';
 import { NavTab } from './Navbar';
 
 interface MobileBottomNavProps {
@@ -42,14 +42,20 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
       labelMl: 'സമയരേഖ',
       icon: <Clock className="w-5 h-5" />,
     },
+    {
+      id: 'about',
+      labelEn: 'About',
+      labelMl: 'വിവരം',
+      icon: <Info className="w-5 h-5" />,
+    },
   ];
 
   return (
     <nav
       aria-label="Mobile Navigation"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl border-t border-amber-200/80 dark:border-stone-800 shadow-[0_-4px_24px_rgba(0,0,0,0.1)] px-2 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] transition-colors"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl border-t border-amber-200/80 dark:border-stone-800 shadow-[0_-4px_24px_rgba(0,0,0,0.1)] px-1.5 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] transition-colors"
     >
-      <div className="grid grid-cols-5 gap-1 max-w-md mx-auto items-center">
+      <div className="grid grid-cols-6 gap-0.5 max-w-md mx-auto items-center">
         {tabs.map((tab) => {
           const isActive = currentTab === tab.id;
           return (
