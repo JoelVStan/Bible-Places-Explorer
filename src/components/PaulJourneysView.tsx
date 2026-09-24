@@ -42,19 +42,19 @@ export const PaulJourneysView: React.FC<PaulJourneysViewProps> = ({
       </div>
 
       {/* Journey Tabs */}
-      <div className="flex items-center justify-center gap-2 overflow-x-auto no-scrollbar pb-2">
+      <div className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-2 px-1">
         {paulJourneys.map((j) => (
           <button
             key={j.id}
             onClick={() => setSelectedJourneyId(j.id)}
-            className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all shadow-xs flex items-center gap-2 whitespace-nowrap ${
+            className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all shadow-xs flex items-center gap-2 whitespace-nowrap cursor-pointer active:scale-95 ${
               selectedJourneyId === j.id
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-900/20 scale-102'
                 : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:bg-stone-100'
             }`}
           >
             <span
-              className="w-2.5 h-2.5 rounded-full"
+              className="w-2.5 h-2.5 rounded-full shrink-0"
               style={{ backgroundColor: j.color }}
             />
             <span>{j.titleEn}</span>
@@ -63,7 +63,7 @@ export const PaulJourneysView: React.FC<PaulJourneysViewProps> = ({
       </div>
 
       {/* Selected Journey Hero Card */}
-      <div className="p-6 rounded-3xl bg-gradient-to-br from-blue-50 via-white to-amber-50/40 dark:from-stone-800/90 dark:via-stone-900 dark:to-stone-900 border border-blue-200/80 dark:border-stone-700 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="p-4 sm:p-6 rounded-3xl bg-gradient-to-br from-blue-50 via-white to-amber-50/40 dark:from-stone-800/90 dark:via-stone-900 dark:to-stone-900 border border-blue-200/80 dark:border-stone-700 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
         <div className="space-y-2 max-w-2xl">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 border border-blue-300/50">
@@ -74,7 +74,7 @@ export const PaulJourneysView: React.FC<PaulJourneysViewProps> = ({
             </span>
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-stone-50 flex items-baseline gap-2">
+          <h2 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-stone-50 flex items-baseline gap-2 flex-wrap">
             <span>{currentJourney.titleMl}</span>
             <span className="text-sm font-normal text-stone-500">({currentJourney.titleEn})</span>
           </h2>
@@ -86,7 +86,7 @@ export const PaulJourneysView: React.FC<PaulJourneysViewProps> = ({
         {/* Action Button: Show Route on Map */}
         <button
           onClick={() => onSelectJourneyForMap(currentJourney)}
-          className="shrink-0 px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-blue-900/20 hover:scale-105 transition-all"
+          className="w-full md:w-auto justify-center shrink-0 px-5 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-blue-900/20 active:scale-95 transition-all cursor-pointer"
         >
           <Compass className="w-4 h-4" />
           <span>View Route on Map</span>

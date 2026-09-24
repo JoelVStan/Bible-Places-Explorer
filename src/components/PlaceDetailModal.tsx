@@ -68,50 +68,53 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl max-h-[90vh] bg-amber-50/98 dark:bg-stone-900/98 rounded-3xl shadow-2xl border border-amber-200 dark:border-stone-800 flex flex-col overflow-hidden text-stone-900 dark:text-stone-100">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl max-h-[92dvh] sm:max-h-[90vh] bg-amber-50/98 dark:bg-stone-900/98 rounded-t-3xl sm:rounded-3xl shadow-2xl border-t sm:border border-amber-200 dark:border-stone-800 flex flex-col overflow-hidden text-stone-900 dark:text-stone-100">
+        {/* Subtle mobile sheet drag indicator */}
+        <div className="w-10 h-1 bg-stone-300 dark:bg-stone-700 rounded-full mx-auto mt-2.5 sm:hidden" />
+
         {/* Modal Header */}
-        <div className="px-6 pt-6 pb-4 border-b border-amber-200/50 dark:border-stone-800/80 bg-gradient-to-r from-amber-100/50 via-transparent to-amber-100/30 dark:from-stone-800/50 dark:to-stone-900/30">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/30">
+        <div className="px-4 sm:px-6 pt-3 sm:pt-6 pb-3 sm:pb-4 border-b border-amber-200/50 dark:border-stone-800/80 bg-gradient-to-r from-amber-100/50 via-transparent to-amber-100/30 dark:from-stone-800/50 dark:to-stone-900/30">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                <span className="text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/30">
                   {place.testament === 'BOTH'
                     ? 'Old & New Testament'
                     : place.testament === 'OT'
                     ? 'Old Testament'
                     : 'New Testament'}
                 </span>
-                <span className="text-xs font-medium px-2 py-0.5 rounded-md bg-stone-200/70 dark:bg-stone-800 text-stone-700 dark:text-stone-300">
+                <span className="text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded-md bg-stone-200/70 dark:bg-stone-800 text-stone-700 dark:text-stone-300">
                   {place.regionMl}
                 </span>
                 {place.elevation && (
-                  <span className="text-xs text-stone-500 flex items-center gap-1">
-                    <Compass className="w-3 h-3" /> Elevation: {place.elevation}
+                  <span className="text-[10px] sm:text-xs text-stone-500 flex items-center gap-1">
+                    <Compass className="w-3 h-3" /> {place.elevation}
                   </span>
                 )}
               </div>
 
               {/* Title with Malayalam primary and English */}
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50 flex items-baseline gap-2">
+              <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50 flex items-baseline gap-2 flex-wrap">
                 <span>{place.nameMl}</span>
-                <span className="text-base sm:text-lg font-medium text-stone-500 dark:text-stone-400">
+                <span className="text-sm sm:text-lg font-medium text-stone-500 dark:text-stone-400">
                   ({place.nameEn})
                 </span>
               </h2>
 
               {place.alternateNamesMl && place.alternateNamesMl.length > 0 && (
-                <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5 font-scripture">
+                <p className="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400 mt-0.5 font-scripture truncate">
                   Also known as: {place.alternateNamesMl.join(', ')}
                 </p>
               )}
             </div>
 
             {/* Quick Actions (Bookmark, Share, Close) */}
-            <div className="flex items-center gap-1.5 shrink-0">
+            <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
               <button
                 onClick={() => onToggleBookmark(place.id)}
-                className={`p-2 rounded-xl border transition-all ${
+                className={`p-2 rounded-xl border transition-all cursor-pointer active:scale-95 ${
                   isBookmarked
                     ? 'bg-amber-500 text-white border-amber-600 shadow-md'
                     : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border-stone-200 dark:border-stone-700 hover:bg-stone-100'
@@ -123,7 +126,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
 
               <button
                 onClick={handleShare}
-                className="p-2 rounded-xl bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:bg-stone-100 transition-colors"
+                className="p-2 rounded-xl bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:bg-stone-100 transition-colors cursor-pointer active:scale-95"
                 title="Share place details"
               >
                 {shareSuccess ? <Check className="w-4 h-4 text-green-500" /> : <Share2 className="w-4 h-4" />}
@@ -131,7 +134,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
 
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl bg-white dark:bg-stone-800 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 border border-stone-200 dark:border-stone-700 hover:bg-stone-100 transition-colors"
+                className="p-2 rounded-xl bg-white dark:bg-stone-800 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 border border-stone-200 dark:border-stone-700 hover:bg-stone-100 transition-colors cursor-pointer active:scale-95"
                 title="Close"
               >
                 <X className="w-4 h-4" />
@@ -140,17 +143,17 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
           </div>
 
           {/* Navigation Tabs */}
-          <div className="flex items-center gap-1 mt-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1 mt-3 sm:mt-4 overflow-x-auto no-scrollbar pb-0.5">
             {[
-              { id: 'history', label: 'Overview & History' },
-              { id: 'verses', label: `Scripture Verses (${place.verses.length})` },
-              { id: 'events', label: `Key Events (${place.keyEvents.length})` },
-              { id: 'modern', label: 'Modern Geography' },
+              { id: 'history', label: 'History & Meaning' },
+              { id: 'verses', label: `Verses (${place.verses.length})` },
+              { id: 'events', label: `Events (${place.keyEvents.length})` },
+              { id: 'modern', label: 'Geography' },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as TabType)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === tab.id
                     ? 'bg-amber-600 text-white shadow-xs'
                     : 'text-stone-600 dark:text-stone-400 hover:bg-amber-100/60 dark:hover:bg-stone-800'
@@ -163,7 +166,7 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
         </div>
 
         {/* Modal Body Content */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 flex-1 pb-[calc(1rem+env(safe-area-inset-bottom))]">
           {/* TAB 1: HISTORY */}
           {activeTab === 'history' && (
             <div className="space-y-5 animate-in fade-in duration-150">
@@ -355,11 +358,12 @@ export const PlaceDetailModal: React.FC<PlaceDetailModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3 border-t border-amber-200/50 dark:border-stone-800 bg-amber-50/50 dark:bg-stone-900/50 flex items-center justify-between text-xs text-stone-500">
-          <span>Bible Places Explorer • Malayalam Biblical Atlas</span>
+        <div className="px-4 sm:px-6 py-3 border-t border-amber-200/50 dark:border-stone-800 bg-amber-50/70 dark:bg-stone-900/70 flex items-center justify-between text-xs text-stone-500 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <span className="hidden sm:inline">Bible Places Explorer • Malayalam Biblical Atlas</span>
+          <span className="sm:hidden text-[11px] font-scripture text-amber-800 dark:text-amber-400">മലയാളം ബൈബിൾ അറ്റ്ലസ്</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 font-medium transition-colors"
+            className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold transition-all cursor-pointer active:scale-95 shadow-xs"
           >
             Close
           </button>

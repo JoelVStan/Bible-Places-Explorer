@@ -39,7 +39,7 @@ export const JesusMinistryView: React.FC<JesusMinistryViewProps> = ({
       </div>
 
       {/* Hero Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-100/60 via-amber-50 to-orange-50/50 dark:from-stone-800/90 dark:via-stone-900 dark:to-stone-900 border border-amber-300/80 dark:border-stone-700 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="p-4 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-100/60 via-amber-50 to-orange-50/50 dark:from-stone-800/90 dark:via-stone-900 dark:to-stone-900 border border-amber-300/80 dark:border-stone-700 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
         <div className="space-y-2 max-w-2xl">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-200 dark:bg-amber-950 text-amber-900 dark:text-amber-300 border border-amber-400/40">
@@ -50,7 +50,7 @@ export const JesusMinistryView: React.FC<JesusMinistryViewProps> = ({
             </span>
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-stone-50 flex items-baseline gap-2">
+          <h2 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-stone-50 flex items-baseline gap-2 flex-wrap">
             <span>{jesusJourney.titleMl}</span>
             <span className="text-sm font-normal text-stone-500">({jesusJourney.titleEn})</span>
           </h2>
@@ -62,7 +62,7 @@ export const JesusMinistryView: React.FC<JesusMinistryViewProps> = ({
         {/* Action Button: Show on Map */}
         <button
           onClick={() => onSelectJourneyForMap(jesusJourney)}
-          className="shrink-0 px-5 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-900/20 hover:scale-105 transition-all"
+          className="w-full md:w-auto justify-center shrink-0 px-5 py-3 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-900/20 active:scale-95 transition-all cursor-pointer"
         >
           <Compass className="w-4 h-4" />
           <span>View Route on Map</span>

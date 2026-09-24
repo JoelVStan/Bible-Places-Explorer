@@ -109,16 +109,16 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
 
         {/* Drawer Footer */}
         {bookmarkedPlaces.length > 0 && (
-          <div className="p-4 border-t border-amber-200/60 dark:border-stone-800 bg-amber-100/30 dark:bg-stone-900/40 flex items-center justify-between">
+          <div className="p-4 border-t border-amber-200/60 dark:border-stone-800 bg-amber-100/30 dark:bg-stone-900/40 flex items-center justify-between pb-[max(1rem,env(safe-area-inset-bottom))]">
             <button
               onClick={onClearAll}
-              className="text-xs text-red-600 hover:underline font-semibold"
+              className="text-xs text-red-600 dark:text-red-400 hover:underline font-semibold cursor-pointer active:scale-95"
             >
               Clear all
             </button>
             <button
               onClick={onClose}
-              className="px-4 py-1.5 rounded-xl bg-amber-600 text-white text-xs font-bold"
+              className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition-all cursor-pointer active:scale-95 shadow-xs"
             >
               Done
             </button>

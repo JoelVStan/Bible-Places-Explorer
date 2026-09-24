@@ -33,15 +33,18 @@ export const DailyFeaturedModal: React.FC<DailyFeaturedModalProps> = ({
   const primaryVerse = place.verses[0];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/65 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-gradient-to-b from-amber-50 via-white to-amber-50/70 dark:from-stone-900 dark:via-stone-900 dark:to-stone-950 rounded-3xl shadow-2xl border-2 border-amber-300 dark:border-amber-700/60 overflow-hidden flex flex-col text-stone-900 dark:text-stone-100">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/65 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl max-h-[92dvh] sm:max-h-[85vh] bg-gradient-to-b from-amber-50 via-white to-amber-50/70 dark:from-stone-900 dark:via-stone-900 dark:to-stone-950 rounded-t-3xl sm:rounded-3xl shadow-2xl border-t sm:border-2 border-amber-300 dark:border-amber-700/60 overflow-hidden flex flex-col text-stone-900 dark:text-stone-100">
+        {/* Subtle mobile sheet drag indicator */}
+        <div className="w-10 h-1 bg-stone-300 dark:bg-stone-700 rounded-full mx-auto mt-2.5 sm:hidden" />
+
         {/* Decorative Top Accent */}
-        <div className="h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600" />
+        <div className="h-2 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-600 hidden sm:block" />
 
         {/* Modal Header */}
-        <div className="p-6 pb-4 flex items-start justify-between gap-3">
+        <div className="px-4 sm:px-6 pt-3 sm:pt-6 pb-3 sm:pb-4 flex items-start justify-between gap-3 border-b border-stone-200/60 dark:border-stone-800">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 dark:text-amber-300 text-xs font-bold mb-2 shadow-2xs">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-900 dark:text-amber-300 text-xs font-bold mb-1.5 shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>ഇന്ന് ഈ സ്ഥലത്ത് • Today at this Place</span>
             </div>
@@ -53,7 +56,7 @@ export const DailyFeaturedModal: React.FC<DailyFeaturedModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+            className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors cursor-pointer active:scale-95"
             title="Close"
           >
             <X className="w-4 h-4" />
@@ -61,7 +64,7 @@ export const DailyFeaturedModal: React.FC<DailyFeaturedModalProps> = ({
         </div>
 
         {/* Featured Place Card */}
-        <div className="px-6 py-2 overflow-y-auto space-y-4 max-h-[70vh]">
+        <div className="px-4 sm:px-6 py-3 overflow-y-auto space-y-4 flex-1">
           <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-100/50 to-orange-100/30 dark:from-stone-800/80 dark:to-stone-800/40 border border-amber-300/60 dark:border-stone-700">
             <div className="flex items-baseline gap-2">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-stone-50">
@@ -115,18 +118,24 @@ export const DailyFeaturedModal: React.FC<DailyFeaturedModalProps> = ({
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="p-6 pt-4 border-t border-amber-200/60 dark:border-stone-800 bg-amber-50/50 dark:bg-stone-900/50 flex flex-wrap items-center justify-between gap-3">
-          <span className="text-xs text-stone-500">
+        <div className="px-4 sm:px-6 py-3 border-t border-amber-200/60 dark:border-stone-800 bg-amber-50/70 dark:bg-stone-900/70 flex flex-wrap items-center justify-between gap-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+          <span className="text-xs text-stone-500 hidden sm:inline">
             Explore sacred biblical heritage daily
           </span>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-end w-full sm:w-auto gap-2">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-semibold hover:bg-stone-300 transition-colors cursor-pointer active:scale-95"
+            >
+              Dismiss
+            </button>
             <button
               onClick={() => {
                 onExplorePlace(place);
                 onClose();
               }}
-              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-md shadow-amber-900/20 flex items-center gap-1.5 transition-all hover:scale-[1.02]"
+              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-md shadow-amber-900/20 flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer"
             >
               <Compass className="w-4 h-4" />
               <span>Explore on Map</span>

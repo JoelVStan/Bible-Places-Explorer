@@ -216,7 +216,7 @@ export const PlacesListView: React.FC<PlacesListViewProps> = ({
 
                   <button
                     onClick={() => onToggleBookmark(place.id)}
-                    className={`p-1.5 rounded-lg border transition-colors ${
+                    className={`p-1.5 rounded-lg border transition-all cursor-pointer active:scale-90 ${
                       isSaved
                         ? 'bg-amber-500 text-white border-amber-600'
                         : 'bg-stone-50 dark:bg-stone-700/60 text-stone-400 border-stone-200 dark:border-stone-600 hover:text-stone-700'
@@ -228,7 +228,7 @@ export const PlacesListView: React.FC<PlacesListViewProps> = ({
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-black text-stone-900 dark:text-stone-50 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors flex items-baseline gap-1.5">
+                <h3 className="text-xl font-black text-stone-900 dark:text-stone-50 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors flex items-baseline gap-1.5 flex-wrap">
                   <span>{place.nameMl}</span>
                   <span className="text-xs font-normal text-stone-400">({place.nameEn})</span>
                 </h3>
@@ -247,7 +247,7 @@ export const PlacesListView: React.FC<PlacesListViewProps> = ({
               <div className="pt-3 mt-4 border-t border-stone-100 dark:border-stone-700/60 flex items-center justify-between text-xs">
                 <button
                   onClick={() => onLocateOnMap(place)}
-                  className="font-medium text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 flex items-center gap-1 transition-colors"
+                  className="font-medium text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 flex items-center gap-1 transition-colors cursor-pointer active:scale-95"
                 >
                   <MapPin className="w-3.5 h-3.5 text-amber-600" />
                   <span>View on Map</span>
@@ -255,7 +255,7 @@ export const PlacesListView: React.FC<PlacesListViewProps> = ({
 
                 <button
                   onClick={() => onSelectPlace(place)}
-                  className="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold flex items-center gap-1 shadow-xs transition-all hover:scale-102"
+                  className="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-semibold flex items-center gap-1 shadow-xs transition-all cursor-pointer active:scale-95"
                 >
                   <span>View Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />

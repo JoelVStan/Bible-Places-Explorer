@@ -3,6 +3,7 @@ import { PLACES_DATA } from './data/placesData';
 import { JOURNEYS_DATA } from './data/journeysData';
 import { Place, Journey, Testament, JourneyStop } from './types';
 import { Navbar, NavTab } from './components/Navbar';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { MapView } from './components/MapView';
 import { PlacesListView } from './components/PlacesListView';
 import { PaulJourneysView } from './components/PaulJourneysView';
@@ -169,7 +170,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans transition-colors duration-150">
+    <div className={`min-h-[100dvh] ${currentTab === 'map' ? 'h-[100dvh] overflow-hidden' : ''} flex flex-col bg-stone-100 dark:bg-stone-950 text-stone-900 dark:text-stone-100 font-sans transition-colors duration-150 relative`}>
       {/* Top Navigation Bar */}
       <Navbar
         currentTab={currentTab}
@@ -194,10 +195,10 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="w-full flex-1">
+      <main className="w-full flex-1 flex flex-col min-h-0 relative">
         {/* TAB 1: INTERACTIVE MAP */}
         {currentTab === 'map' && (
-          <div className="w-full h-[calc(100dvh-3.5rem-3.5rem)] sm:h-[calc(100vh-6.5rem)] min-h-[450px]">
+          <div className="w-full h-full flex-1 min-h-0 relative overflow-hidden pb-16 md:pb-0">
             <MapView
               places={PLACES_DATA}
               selectedPlace={selectedPlace}
@@ -217,7 +218,7 @@ export default function App() {
 
         {/* TAB 2: PLACES DIRECTORY LIST */}
         {currentTab === 'places' && (
-          <div className="pb-20 sm:pb-8">
+          <div className="pb-28 md:pb-8 flex-1">
             <PlacesListView
               places={PLACES_DATA}
               onSelectPlace={handleSelectPlace}
@@ -232,7 +233,7 @@ export default function App() {
 
         {/* TAB 3: PAUL'S MISSIONARY JOURNEYS */}
         {currentTab === 'paul' && (
-          <div className="pb-20 sm:pb-8">
+          <div className="pb-28 md:pb-8 flex-1">
             <PaulJourneysView
               onSelectJourneyForMap={handleSelectJourneyForMap}
               onSelectStopOnMap={handleSelectStopOnMap}
@@ -243,7 +244,7 @@ export default function App() {
 
         {/* TAB 4: JESUS' MINISTRY ROUTE */}
         {currentTab === 'jesus' && (
-          <div className="pb-20 sm:pb-8">
+          <div className="pb-28 md:pb-8 flex-1">
             <JesusMinistryView
               onSelectJourneyForMap={handleSelectJourneyForMap}
               onSelectStopOnMap={handleSelectStopOnMap}
@@ -254,7 +255,7 @@ export default function App() {
 
         {/* TAB 5: TIMELINE OF BIBLICAL EVENTS */}
         {currentTab === 'timeline' && (
-          <div className="pb-20 sm:pb-8">
+          <div className="pb-28 md:pb-8 flex-1">
             <TimelineView
               onSelectPlaceId={handleSelectPlaceById}
               onReadVerse={handleReadChapter}
@@ -263,8 +264,19 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer with dynamic year and JoelStan attribution */}
-      <Footer />
+      {/* Footer shown on scrollable tabs (not on map to prevent vertical scrolling on map canvas) */}
+      {currentTab !== 'map' && <Footer />}
+
+      {/* Mobile Sticky Bottom Navigation Bar */}
+      <MobileBottomNav
+        currentTab={currentTab}
+        onTabChange={(tab) => {
+          setCurrentTab(tab);
+          if (tab !== 'map') {
+            setActiveJourney(null);
+          }
+        }}
+      />
 
       {/* Place Detail Modal */}
       {isDetailModalOpen && selectedPlace && (

@@ -100,31 +100,34 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/70 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl max-h-[92vh] bg-amber-50/98 dark:bg-stone-900/98 rounded-3xl shadow-2xl border border-amber-200 dark:border-stone-800 flex flex-col overflow-hidden text-stone-900 dark:text-stone-100">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl max-h-[94dvh] sm:max-h-[92vh] bg-amber-50/98 dark:bg-stone-900/98 rounded-t-3xl sm:rounded-3xl shadow-2xl border-t sm:border border-amber-200 dark:border-stone-800 flex flex-col overflow-hidden text-stone-900 dark:text-stone-100">
+        {/* Subtle mobile sheet drag indicator */}
+        <div className="w-10 h-1 bg-stone-300 dark:bg-stone-700 rounded-full mx-auto mt-2.5 sm:hidden" />
+
         {/* Header */}
-        <div className="px-5 py-4 border-b border-amber-200/60 dark:border-stone-800 bg-amber-100/50 dark:bg-stone-800/50 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-xs">
-              <BookOpen className="w-5 h-5" />
+        <div className="px-3.5 sm:px-5 py-3 sm:py-4 border-b border-amber-200/60 dark:border-stone-800 bg-amber-100/50 dark:bg-stone-800/50 flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-xs shrink-0">
+              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-50 leading-tight">
-                {bookNameMl} - Chapter {chapterNumber}
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-xl font-bold text-stone-900 dark:text-stone-50 leading-tight truncate">
+                {bookNameMl} - {chapterNumber}
               </h3>
-              <p className="text-[11px] text-stone-500 dark:text-stone-400">
-                Malayalam Holy Bible (സത്യവേദപുസ്തകം)
+              <p className="text-[10px] sm:text-[11px] text-stone-500 dark:text-stone-400 truncate">
+                സത്യവേദപുസ്തകം (Malayalam Bible)
               </p>
             </div>
           </div>
 
           {/* Action buttons (Font zoom, Copy, Close) */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             {/* Font size switcher */}
             <div className="flex items-center bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg p-0.5">
               <button
                 onClick={() => setFontSize('normal')}
-                className={`px-2 py-1 text-xs rounded font-medium ${
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded font-medium cursor-pointer ${
                   fontSize === 'normal'
                     ? 'bg-amber-600 text-white'
                     : 'text-stone-600 dark:text-stone-300'
@@ -135,7 +138,7 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
               </button>
               <button
                 onClick={() => setFontSize('large')}
-                className={`px-2 py-1 text-xs rounded font-medium ${
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded font-medium cursor-pointer ${
                   fontSize === 'large'
                     ? 'bg-amber-600 text-white'
                     : 'text-stone-600 dark:text-stone-300'
@@ -146,7 +149,7 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
               </button>
               <button
                 onClick={() => setFontSize('xl')}
-                className={`px-2 py-1 text-xs rounded font-medium ${
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs rounded font-medium cursor-pointer ${
                   fontSize === 'xl'
                     ? 'bg-amber-600 text-white'
                     : 'text-stone-600 dark:text-stone-300'
@@ -160,7 +163,7 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
             {/* Copy full chapter */}
             <button
               onClick={handleCopyWholeChapter}
-              className="p-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 transition-colors"
+              className="p-1.5 sm:p-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:bg-stone-100 transition-colors cursor-pointer active:scale-95"
               title="Copy entire chapter"
             >
               {copiedAll ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
@@ -169,7 +172,7 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
             {/* Close */}
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 transition-colors"
+              className="p-1.5 sm:p-2 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 transition-colors cursor-pointer active:scale-95"
               title="Close reader"
             >
               <X className="w-4 h-4" />
@@ -268,26 +271,28 @@ export const FullChapterReader: React.FC<FullChapterReaderProps> = ({
         </div>
 
         {/* Footer Navigation (Prev Chapter / Next Chapter) */}
-        <div className="px-5 py-3 border-t border-amber-200/60 dark:border-stone-800 bg-amber-50/70 dark:bg-stone-900/70 flex items-center justify-between text-xs">
+        <div className="px-3 sm:px-5 py-2.5 sm:py-3 border-t border-amber-200/60 dark:border-stone-800 bg-amber-50/70 dark:bg-stone-900/70 flex items-center justify-between text-xs pb-[max(0.75rem,env(safe-area-inset-bottom))] gap-2">
           <button
             onClick={handlePrevChapter}
             disabled={chapterNumber <= 1}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-stone-100 transition-colors font-medium"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-stone-100 transition-colors font-medium cursor-pointer active:scale-95"
           >
             <ChevronLeft className="w-4 h-4" />
-            <span>Previous Chapter ({chapterNumber - 1})</span>
+            <span className="hidden sm:inline">Previous Chapter ({chapterNumber - 1})</span>
+            <span className="sm:hidden">Ch {chapterNumber - 1}</span>
           </button>
 
-          <span className="text-stone-500 font-medium">
-            Chapter {chapterNumber} of {totalChapters}
+          <span className="text-stone-500 font-medium text-[11px] sm:text-xs text-center shrink-0">
+            {chapterNumber} / {totalChapters}
           </span>
 
           <button
             onClick={handleNextChapter}
             disabled={chapterNumber >= totalChapters}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-stone-100 transition-colors font-medium"
+            className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-stone-100 transition-colors font-medium cursor-pointer active:scale-95"
           >
-            <span>Next Chapter ({chapterNumber + 1})</span>
+            <span className="hidden sm:inline">Next Chapter ({chapterNumber + 1})</span>
+            <span className="sm:hidden">Ch {chapterNumber + 1}</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
