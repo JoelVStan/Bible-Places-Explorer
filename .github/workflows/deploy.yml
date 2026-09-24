@@ -29,7 +29,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+
+      - name: Verify repository structure
+        run: |
+          echo "=== Checking repository checkout ==="
+          pwd
+          ls -la
+          if [ ! -d "src" ]; then
+            echo "::error::The 'src' directory was not found in the checked out repository! Check that 'src' is pushed to this branch on GitHub."
+            find . -maxdepth 2 -not -path '*/.*'
+            exit 1
+          fi
+          echo "Found 'src' directory:"
+          ls -la src
 
       - name: Install dependencies
         run: npm install
